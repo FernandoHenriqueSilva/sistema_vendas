@@ -17,7 +17,7 @@ COPY . /var/www/html/
 # Defina diretório de trabalho
 WORKDIR /var/www/html/
 
-# Ajuste permissões
+# Ajuste das permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
