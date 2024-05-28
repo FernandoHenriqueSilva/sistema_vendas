@@ -14,7 +14,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copie o código fonte do aplicativo para o contêiner
 COPY . /var/www/html/
 
-# Defina o diretório de trabalho
+# Defina diretório de trabalho
 WORKDIR /var/www/html/
 
 # Ajuste permissões
