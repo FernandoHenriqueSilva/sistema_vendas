@@ -27,6 +27,7 @@ jobs:
           
   CD: 
     runs-on: ubuntu-latest
+    needs: [CI]
     steps:
       - name: "Deploy para Azure"
         uses: azure/webapps-deploy@v2
