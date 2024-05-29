@@ -8,8 +8,4 @@
 
 <?php include('templates/header.php'); ?>
 
-<h2>Produtos</h2>
-<?php include('list_products.php'); ?>
-
-<?php include('templates/footer.php'); ?>
 
