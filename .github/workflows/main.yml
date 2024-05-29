@@ -1,0 +1,27 @@
+name: CI-CD
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs: 
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout do código"
+        uses: actions/checkout@v4.1.5
+      - name: Docker login
+        uses: docker/login-actions@v3.1.0
+        with:
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - name: "Docker build e Push da imagem"
+        uses: docker/build-push-action@v5.3.0
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: |
+            fernandohs99/sistema_vendas:${{ github.run_number }}
+            fernandohs99/sistema_vendas:latest
+          
