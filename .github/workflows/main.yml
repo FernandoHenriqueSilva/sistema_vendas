@@ -22,7 +22,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            fernandohs99/sistema_vendas:${{ github.run_number }}
+            fernandohs99/sistema_vendas:v${{ github.run_number }}
             fernandohs99/sistema_vendas:latest
           
   CD: 
@@ -34,4 +34,4 @@ jobs:
         with:
           app-name: vendasfernando
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          images: fernandohs99/sistema_vendas:v${{ github.run_number }}
+          images: fernandohs99/sistema_vendas:${{ github.run_number }}
