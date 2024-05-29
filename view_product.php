@@ -25,7 +25,7 @@ if (!$product) {
 $sql = "SELECT * FROM product_photos WHERE product_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $product_id);
-$stmt->execute(); // Esta é a linha que estava faltando
+$stmt->execute();
 $result = $stmt->get_result();
 $photos = [];
 while ($row = $result->fetch_assoc()) {

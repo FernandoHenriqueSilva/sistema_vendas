@@ -1,15 +1,22 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT id, title, price, payment_mode, contact FROM products";
+$sql = "SELECT p.id, p.title, p.price, p.payment_mode, p.contact, ph.photo_url 
+        FROM products p 
+        LEFT JOIN product_photos ph ON p.id = ph.product_id 
+        GROUP BY p.id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>ID</th><th>Title</th><th>Price</th><th>Payment Mode</th><th>Contact</th></tr>";
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["title"]. "</td><td>" . $row["price"]. "</td><td>" . $row["payment_mode"]. "</td><td>" . $row["contact"]. "</td></tr>";
+    echo "<ul>";
+    while ($row = $result->fetch_assoc()) {
+        $photo_url = $row['photo_url'] ? htmlspecialchars($row['photo_url']) : 'placeholder.png';
+        echo "<li>";
+        echo "<img src='$photo_url' alt='Product Image'>";
+        echo "<a href='view_product.php?id=" . $row["id"] . "'>" . htmlspecialchars($row["title"]) . "</a>";
+        echo "</li>";
     }
-    echo "</table>";
+    echo "</ul>";
 } else {
     echo "0 results";
 }

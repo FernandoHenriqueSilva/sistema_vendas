@@ -1,10 +1,10 @@
 <div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <?php foreach ($photos as $photo_url): ?>
-            <img src="<?php echo $photo_url; ?>" alt="Product Image" style="width:100%; height:auto; margin-bottom:10px;">
-        <?php endforeach; ?>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <?php foreach ($photos as $photo): ?>
+        <img src="<?php echo htmlspecialchars($photo); ?>" alt="Product Image" class="product-img">
+    <?php endforeach; ?>
+  </div>
 </div>
 
 <script>

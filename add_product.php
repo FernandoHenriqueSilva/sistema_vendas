@@ -36,48 +36,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->execute();
                 $stmt->close();
             } catch (Exception $e) {
-                echo "Failed to upload to Azure Blob Storage: " . $e->getMessage();
+                die("Error uploading file: " . $e->getMessage());
             }
         }
     }
 
-    echo "Product added successfully!";
+    echo "Product and photos added successfully.";
 }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Product</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <?php include 'templates/header.php'; ?>
+<?php include('templates/header.php'); ?>
 
-    <h2>Add Product</h2>
-    <form action="add_product.php" method="post" enctype="multipart/form-data">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
+<h2>Add New Product</h2>
+<form method="post" enctype="multipart/form-data">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
 
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" required>
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" required>
 
-        <label for="payment_mode">Payment Mode:</label>
-        <select id="payment_mode" name="payment_mode">
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Pix">Pix</option>
-            <option value="Cartão">Cartão</option>
-        </select>
+    <label for="payment_mode">Payment Mode:</label>
+    <select id="payment_mode" name="payment_mode" required>
+        <option value="cash">Cash</option>
+        <option value="credit">Credit</option>
+        <option value="debit">Debit</option>
+    </select>
 
-        <label for="contact">Contact:</label>
-        <input type="text" id="contact" name="contact" required>
+    <label for="contact">Contact:</label>
+    <input type="text" id="contact" name="contact" required>
 
-        <label for="photos">Photos (max 5):</label>
-        <input type="file" id="photos" name="photos[]" multiple accept="image/*" required>
+    <label for="photos">Photos:</label>
+    <input type="file" id="photos" name="photos[]" multiple>
 
-        <button type="submit">Add Product</button>
-    </form>
+    <button type="submit">Add Product</button>
+</form>
 
-    <?php include 'templates/footer.php'; ?>
-</body>
-</html>
+<?php include('templates/footer.php'); ?>
