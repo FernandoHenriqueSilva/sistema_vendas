@@ -5,8 +5,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Adicionando esta linha para organizar o body em colunas */
-    height: 100vh; /* Garantindo que o body ocupe a altura total da viewport */
+    flex-direction: column;
+    height: 100vh;
 }
 
 header, footer {
@@ -14,12 +14,12 @@ header, footer {
     color: #fff;
     padding: 10px 0;
     text-align: center;
-    flex-shrink: 0; /* Para evitar que o header e footer encolham */
+    flex-shrink: 0;
 }
 
 .container {
     display: flex;
-    flex: 1; /* Faz com que o container ocupe o espaço restante entre o header e o footer */
+    flex: 1;
 }
 
 .sidebar {
@@ -28,9 +28,10 @@ header, footer {
     color: white;
     padding-top: 20px;
     position: fixed;
-    height: calc(100% - 40px); /* Ajuste para considerar a altura do header e footer */
     top: 0;
     bottom: 0;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .sidebar a {
@@ -47,9 +48,9 @@ header, footer {
 
 .content {
     flex-grow: 1;
-    margin-left: 200px; /* Espaço para o menu lateral */
+    margin-left: 200px;
     padding: 20px;
-    overflow-y: auto; /* Permite rolagem se o conteúdo for muito alto */
+    overflow-y: auto;
 }
 
 h1, h2 {
@@ -107,9 +108,11 @@ ul li {
 }
 
 ul li img {
-    max-width: 100px;
+    width: 100px;
+    height: 100px;
     margin-right: 20px;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 ul li a {
@@ -182,14 +185,32 @@ ul li a:hover {
 .product-img {
     width: 600px;
     height: 400px;
-    object-fit: cover; /* Garante que a imagem cubra todo o espaço especificado */
+    object-fit: cover;
     border-radius: 8px;
 }
 
 .preview-img {
-    width: 200px; /* Ajuste o tamanho conforme necessário */
+    width: 200px;
     height: auto;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+}
+
+/* Add this to your existing CSS */
+.add-project-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.add-project-button:hover {
+    background-color: #0056b3;
 }

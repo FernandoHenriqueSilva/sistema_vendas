@@ -27,34 +27,21 @@ if (!$result) {
     <link rel="stylesheet" href="styles.css"> <!-- Certifique-se de ter um arquivo CSS para estilização -->
 </head>
 <body>
-    <header>
-        <h1>Product List</h1>
-    </header>
-    <div class="container">
-        <div class="sidebar">
-            <!-- Adicione links de navegação da sidebar aqui -->
-        </div>
-        <div class="content">
-            <ul>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                <li>
-                    <?php if ($row['photo_url']): ?>
-                    <img src="<?php echo htmlspecialchars($row['photo_url']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" />
-                    <?php endif; ?>
-                    <div>
-                        <h2><?php echo htmlspecialchars($row['title']); ?></h2>
-                        <p>Price: $<?php echo htmlspecialchars($row['price']); ?></p>
-                        <p>Payment Mode: <?php echo htmlspecialchars($row['payment_mode']); ?></p>
-                        <a href="product_details.php?id=<?php echo htmlspecialchars($row['id']); ?>">View Details</a>
-                    </div>
-                </li>
-                <?php endwhile; ?>
-            </ul>
-        </div>
-    </div>
-    <footer>
-        <p>&copy; 2024 Your Company</p>
-    </footer>
+    <ul class="product-list">
+        <?php while ($row = $result->fetch_assoc()): ?>
+        <li class="product-item">
+            <?php if ($row['photo_url']): ?>
+            <img src="<?php echo htmlspecialchars($row['photo_url']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" class="product-image" />
+            <?php endif; ?>
+            <div class="product-details">
+                <h2 class="product-title"><?php echo htmlspecialchars($row['title']); ?></h2>
+                <p class="product-price">Price: $<?php echo htmlspecialchars($row['price']); ?></p>
+                <p class="product-payment-mode">Payment Mode: <?php echo htmlspecialchars($row['payment_mode']); ?></p>
+                <a href="product_details.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="product-link">View Details</a>
+            </div>
+        </li>
+        <?php endwhile; ?>
+    </ul>
 </body>
 </html>
 
