@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-$query = "SELECT p.id, p.title, p.price, p.payment_mode, ph.photo_url
+$query = "SELECT p.id, p.title, p.price, p.payment_mode, MIN(ph.photo_url) AS photo_url
           FROM products p
           LEFT JOIN product_photos ph ON p.id = ph.product_id
           GROUP BY p.id
