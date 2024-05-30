@@ -2,7 +2,6 @@
 
 <div class="container">
     <div class="sidebar">
-        <!-- Seu menu aqui -->
         <a href="index.php">Tela Inicial</a>
         <a href="add_product.php">Cadastrar Itens</a>
         <a href="view_items.php">Visualizar Itens</a>

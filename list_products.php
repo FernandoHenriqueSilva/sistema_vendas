@@ -1,24 +1,27 @@
 <?php
-include 'config.php';
+require 'config.php';
 
-$sql = "SELECT id, title, price, payment_mode, contact FROM products LIMIT 10"; // Limitar a consulta para os 10 primeiros itens
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo "<div class='product-list'>";
-    while($row = $result->fetch_assoc()) {
-        echo "<div class='product'>";
-        echo "<h3>" . $row["title"]. "</h3>";
-        echo "<p>Price: $" . $row["price"]. "</p>";
-        echo "<p>Payment Mode: " . ucfirst($row["payment_mode"]). "</p>";
-        echo "<p>Contact: " . $row["contact"]. "</p>";
-        // Adicionar a imagem com uma classe para pré-visualização
-        echo "<img src='product_images/{$row["id"]}.jpg' alt='Product Image' class='preview-img'>";
-        echo "</div>";
-    }
-    echo "</div>";
-} else {
-    echo "0 results";
-}
-$conn->close();
+$query = "SELECT p.id, p.title, p.price, p.payment_mode, ph.photo_url
+          FROM products p
+          LEFT JOIN product_photos ph ON p.id = ph.product_id
+          GROUP BY p.id
+          ORDER BY p.id DESC
+          LIMIT 10";
+$result = $conn->query($query);
 ?>
+
+<ul>
+    <?php while ($row = $result->fetch_assoc()): ?>
+    <li>
+        <?php if ($row['photo_url']): ?>
+        <img src="<?php echo $row['photo_url']; ?>" alt="<?php echo $row['title']; ?>" />
+        <?php endif; ?>
+        <div>
+            <h2><?php echo $row['title']; ?></h2>
+            <p>Price: $<?php echo $row['price']; ?></p>
+            <p>Payment Mode: <?php echo $row['payment_mode']; ?></p>
+            <a href="product_details.php?id=<?php echo $row['id']; ?>">View Details</a>
+        </div>
+    </li>
+    <?php endwhile; ?>
+</ul>
