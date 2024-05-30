@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <h1>Vendas Web</h1>
+        <h1>MARKET PLACE</h1>
     </header>
     <div class="sidebar">
         <a href="index.php">Tela Inicial</a>
