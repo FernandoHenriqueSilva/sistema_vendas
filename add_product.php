@@ -4,7 +4,7 @@
     <div class="sidebar">
         <a href="index.php">Tela Inicial</a>
         <a href="add_product.php">Cadastrar Itens</a>
-        <a href="view_items.php">Visualizar Itens</a>
+        <a href="list_products.php">Visualizar Itens</a>
     </div>
     <div class="content">
         <h1>Cadastrar Novo Produto</h1>
@@ -58,7 +58,7 @@
             <input type="text" id="contact" name="contact" required>
             <label for="photos">Photos</label>
             <input type="file" id="photos" name="photos[]" multiple>
-            <button type="submit">Add Product</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </div>

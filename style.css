@@ -196,3 +196,21 @@ ul li a:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
+/* Add this to your existing CSS */
+.add-project-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.add-project-button:hover {
+    background-color: #0056b3;
+}
