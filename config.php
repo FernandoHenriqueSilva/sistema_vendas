@@ -1,7 +1,7 @@
 <?php
-$servername = "azuredbvendasfernando.mysql.database.azure.com";
-$username = "fernando";
-$password = "Rasengan1*";
+$servername = getenv('DB_SERVER');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
 $dbname = "sistema_vendas";
 
 // Crie a conexão com o banco de dados
@@ -14,8 +14,8 @@ if ($conn->connect_error) {
 
 // Azure Blob Storage configuration
 $blobAccountName = "storagevendasfernando";
-$blobContainerName = "blobvendas"; // Adicione esta linha para definir a variável
-$blobSasToken = "sp=racwdl&st=2024-05-28T01:29:17Z&se=2024-05-31T09:29:17Z&spr=https&sv=2022-11-02&sr=c&sig=qNyZbN1aebYr83Wpqbbwxuno1ViwJ0z14dRZvMRgHJk%3D";
+$blobContainerName = "blobvendas";
+$blobSasToken = getenv('BLOB_TOKEN');
 
 // Formar a string de conexão do blob
 $blobConnectionString = "BlobEndpoint=https://$blobAccountName.blob.core.windows.net/;SharedAccessSignature=$blobSasToken";
